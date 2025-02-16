@@ -74,8 +74,8 @@ int main()
 	while (1) {
 		
 		// Load main script
-		SceUID main_file = sceIoOpen("app0:/index.lua", SCE_O_RDONLY, 0777);
-		if (main_file < 0) errMsg = "index.lua not found.";
+		SceUID main_file = sceIoOpen("app0:/main.lua", SCE_O_RDONLY, 0777);
+		if (main_file < 0) errMsg = "The main .lua script wasn't found.";
 		else {
 			SceOff size = sceIoLseek(main_file, 0, SEEK_END);
 			if (size < 1) errMsg = "Invalid main script.";
@@ -96,8 +96,8 @@ int main()
 			while (restore == 0) {
 				vita2d_start_drawing();
 				vita2d_clear_screen();
-				vita2d_pgf_draw_textf(debug_font, 2, 19.402, RGBA8(255, 255, 255, 255), 1.0, "An error occurred:\n%s\n\nPress X to restart.\nPress O to enable/disable FTP.", errorMex);
-				if (vita_port != 0) vita2d_pgf_draw_textf(debug_font, 2, 200, RGBA8(255, 255, 255, 255), 1.0, "PSVITA listening on IP %s , Port %u", vita_ip, vita_port);
+				vita2d_pgf_draw_textf(debug_font, 2, 19.402, RGBA8(255, 255, 255, 255), 1.0, "An error occurred:\n%s\n\nPress Cross to restart.\nPress Circle to enable/disable FTP.", errorMex);
+				if (vita_port != 0) vita2d_pgf_draw_textf(debug_font, 2, 200, RGBA8(255, 255, 255, 255), 1.0, "FTP enabled at: %s:%u", vita_ip, vita_port);
 				vita2d_end_drawing();
 				vita2d_swap_buffers();
 				sceDisplayWaitVblankStart();
