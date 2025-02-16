@@ -59,7 +59,7 @@ int main()
 	vita2d_set_clear_color(RGBA8(0x00, 0x00, 0x00, 0xFF));
 	vita2d_set_vblank_wait(0);
 	clr_color = 0x000000FF;
-	debug_font = vita2d_load_default_pgf();
+	default_font = vita2d_load_default_pgf();
 	
 	// Getting newlib heap memblock starting address
 	void *addr = NULL;
@@ -97,7 +97,7 @@ int main()
 				vita2d_start_drawing();
 				vita2d_clear_screen();
 				vita2d_pgf_draw_textf(debug_font, 2, 19.402, RGBA8(255, 255, 255, 255), 1.0, "An error occurred:\n%s\n\nPress Cross to restart.\nPress Circle to enable/disable FTP.", errorMex);
-				if (vita_port != 0) vita2d_pgf_draw_textf(debug_font, 2, 200, RGBA8(255, 255, 255, 255), 1.0, "FTP enabled at: %s:%u", vita_ip, vita_port);
+				if (vita_port != 0) vita2d_pgf_draw_textf(default_font, 2, 200, RGBA8(255, 255, 255, 255), 1.0, "FTP enabled at: %s:%u", vita_ip, vita_port);
 				vita2d_end_drawing();
 				vita2d_swap_buffers();
 				sceDisplayWaitVblankStart();
