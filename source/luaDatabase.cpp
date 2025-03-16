@@ -103,12 +103,12 @@ static int lua_query(lua_State *L){
 static const luaL_Reg Database_functions[] = {
   {"open",                  lua_opendb},
   {"close",                 lua_closedb},
-  {"execQuery",             lua_query},
+  {"query",             lua_query},
   {0, 0}
 };
 
 void luaDatabase_init(lua_State *L) {
 	lua_newtable(L);
 	luaL_setfuncs(L, Database_functions, 0);
-	lua_setglobal(L, "Database");
+	lua_setglobal(L, "db");
 }
