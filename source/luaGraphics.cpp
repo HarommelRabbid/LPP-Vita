@@ -903,7 +903,7 @@ static int lua_gpixel(lua_State *L) {
 static const luaL_Reg Graphics_functions[] = {
   {"initBlend",           lua_init},
   {"termBlend",           lua_term},
-  {"debugPrint",          lua_print},
+  {"print",          lua_print},
   {"drawPixel",           lua_pixel},
   {"getPixel",            lua_gpixel},
   {"drawLine",            lua_line},
@@ -916,7 +916,7 @@ static const luaL_Reg Graphics_functions[] = {
   {"loadAnimatedImage",   lua_loadanimg},
   {"getImageFramesNum",   lua_getnumframes},
   {"setImageFrame",       lua_setframe},
-  {"drawImage",           lua_drawimg},
+  {"showImage",           lua_drawimg},
   {"drawRotateImage",     lua_drawimg_rotate},
   {"drawScaleImage",      lua_drawimg_scale},
   {"drawPartialImage",    lua_drawimg_part},
@@ -949,9 +949,9 @@ void luaGraphics_init(lua_State *L) {
 	VariableRegister(L,FILTER_LINEAR);
 	lua_newtable(L);
 	luaL_setfuncs(L, Graphics_functions, 0);
-	lua_setglobal(L, "Graphics");
+	lua_setglobal(L, "graphics");
 	lua_newtable(L);
 	luaL_setfuncs(L, Font_functions, 0);
-	lua_setglobal(L, "Font");
+	lua_setglobal(L, "font");
 	lua_newtable(L);
 }
